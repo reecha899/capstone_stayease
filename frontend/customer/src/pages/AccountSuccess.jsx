@@ -63,7 +63,7 @@ const AccountSuccess = () => {
           </Typography>
           <Button
             component={RouterLink}
-            to="/"
+            to="/home"
             variant="contained"
             fullWidth
             sx={{
