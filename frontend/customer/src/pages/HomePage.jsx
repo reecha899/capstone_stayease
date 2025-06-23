@@ -19,6 +19,7 @@ import person3 from '../assets/person-3.png';
 import { Rating, Avatar } from '@mui/material';
 import CircleIcon from '@mui/icons-material/Circle';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import Footer from '../components/Footer';
 
 
 const HomePage = () => {
@@ -113,7 +114,7 @@ const HomePage = () => {
               bgcolor: '#208c6c',
             }}
           >
-            <Grid container alignItems="flex-end" spacing={1}>
+            <Grid container alignItems="flex-end" spacing={1} display={'flex'} flexDirection={'row'} width={'100%'} flexWrap={'nowrap'}>
               <Grid item md><Typography component="label" sx={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.8rem', display: 'block', mb: 0.5 }}>Check In</Typography><TextField type="date" variant="standard" fullWidth InputProps={{ disableUnderline: true, sx: { bgcolor: 'white', borderRadius: '4px', height: '48px', px: 1.5 } }} /></Grid>
               <Grid item><Divider orientation="vertical" sx={{ height: '48px', bgcolor: 'rgba(255,255,255,0.3)' }} /></Grid>
               <Grid item md><Typography component="label" sx={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.8rem', display: 'block', mb: 0.5 }}>Check Out</Typography><TextField type="date" variant="standard" fullWidth InputProps={{ disableUnderline: true, sx: { bgcolor: 'white', borderRadius: '4px', height: '48px', px: 1.5 } }} /></Grid>
@@ -553,7 +554,7 @@ const HomePage = () => {
       {/* --- Mobile View --- */}
       <Box sx={{ display: { xs: 'block', md: 'none' } }}>
         {/* Mobile Hero + Search */}
-        <Box sx={{ mb: 4 }}><Box sx={{ position: 'relative', height: 380, width: '100%', backgroundImage: `url(${coverImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}><Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(0,0,0,0.4)', zIndex: 1 }} /><Box sx={{ position: 'relative', zIndex: 2, height: '100%', px: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', color: 'white' }}><Typography variant="h4" sx={{ fontWeight: 700, textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>Book With Best</Typography><Typography variant="h6" sx={{ fontWeight: 600, textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>Luxury Hotel</Typography></Box></Box><Box sx={{ mt: -12, px: 2, position: 'relative', zIndex: 5, display: 'flex', justifyContent: 'center' }}><Paper elevation={6} sx={{ width: '100%', bgcolor: '#208c6c', borderRadius: '16px', p: 2 }}><Grid container spacing={2}>{[ { label: 'Check In', type: 'date' }, { label: 'Check Out', type: 'date' }, { label: 'Rooms', type: 'number' }, { label: 'Adults', type: 'number' }, { label: 'Children', type: 'number' }, ].map(({ label, type }) => (<Grid item xs={12} key={label}><TextField placeholder={label} type={type} fullWidth InputLabelProps={type === 'date' ? { shrink: true } : undefined} sx={{ bgcolor: 'white', borderRadius: 1, '& .MuiOutlinedInput-root > fieldset': { border: 'none' } }}/></Grid>))}<Grid item xs={12} sx={{ textAlign: 'center' }}><Button variant="contained" sx={{ height: '56px', bgcolor: 'white', color: '#208c6c', fontWeight: 600, '&:hover': { bgcolor: '#f0f0f0' }, px: 6 }}>Check Now</Button></Grid></Grid></Paper></Box></Box>
+        <Box sx={{ mb: 4 }}><Box sx={{ position: 'relative', height: 380, width: '100%', backgroundImage: `url(${coverImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}><Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(0,0,0,0.4)', zIndex: 1 }} /><Box sx={{ position: 'relative', zIndex: 2, height: '100%', px: 2, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', color: 'white' }}><Typography variant="h4" sx={{ fontWeight: 700, textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>Book With Best</Typography><Typography variant="h6" sx={{ fontWeight: 600, textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>Luxury Hotel</Typography></Box></Box><Box sx={{ mt: -12, px: 2, position: 'relative', zIndex: 5, display: 'flex', justifyContent: 'center' }}><Paper elevation={6} sx={{ width: '100%', bgcolor: '#208c6c', borderRadius: '16px', p: 2 }}><Grid container spacing={2} display={'flex'} width={'100%'} flexWrap={'nowrap'} flexDirection={'column'}>{[ { label: 'Check In', type: 'date' }, { label: 'Check Out', type: 'date' }, { label: 'Rooms', type: 'number' }, { label: 'Adults', type: 'number' }, { label: 'Children', type: 'number' }, ].map(({ label, type }) => (<Grid item xs={12} key={label}><TextField placeholder={label} type={type} fullWidth InputLabelProps={type === 'date' ? { shrink: true } : undefined} sx={{ bgcolor: 'white', borderRadius: 1, '& .MuiOutlinedInput-root > fieldset': { border: 'none' } }}/></Grid>))}<Grid item xs={12} sx={{ textAlign: 'center' }}><Button variant="contained" sx={{ height: '56px', bgcolor: 'white', color: '#208c6c', fontWeight: 600, '&:hover': { bgcolor: '#f0f0f0' }, px: 6 }}>Check Now</Button></Grid></Grid></Paper></Box></Box>
         {/* Mobile: World Class Luxury Hotel Section */}
         <Box sx={{ py: 4, bgcolor: '#f0f4ec' }}><Box sx={{ px: 2 }}><Box component="img" src={luxuryCityHotelImage} alt="Luxury hotel by the city" sx={{ width: '100%', borderRadius: '16px', mb: 3, display: 'block', boxShadow: '0 8px 24px rgba(0,0,0,0.1)' }}/><Typography variant="h5" fontWeight="bold">World Class Luxury Hotel</Typography><Typography variant="h5" fontWeight="bold" sx={{ mb: 3 }}>Near City</Typography>{['24 Hour Emergency Service', 'Comfortable Atmosphere', 'Something By Accident'].map((text) => (<Box key={text} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}><CheckCircle sx={{ color: '#208c6c', mr: 1.5 }} /><Typography variant="body1">{text}</Typography></Box>))}</Box></Box>
         {/* Mobile: Amenities Section */}
@@ -756,6 +757,7 @@ const HomePage = () => {
           <ReactPlayer url="https://youtu.be/_PO-5v5lJNs?si=Nm9ue0mo-CiLA7Gl" width="100%" height="100%" playing={open} controls />
         </Box>
       </Modal>
+      <Footer />
     </Box>
   );
 };

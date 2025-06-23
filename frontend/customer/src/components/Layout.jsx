@@ -28,12 +28,12 @@ import logo from '../assets/customer-site-logo.jpg';
 const drawerWidth = 280;
 
 const menuItems = [
-  { text: 'Home', icon: <HomeIcon /> },
-  { text: 'Pages', icon: <PagesIcon /> },
-  { text: 'Rooms & Suites', icon: <MeetingRoomIcon /> },
-  { text: 'Services', icon: <MiscellaneousServicesIcon /> },
-  { text: 'Blog', icon: <BookIcon /> },
-  { text: 'Contact', icon: <ContactMailIcon /> },
+  { text: 'Home', icon: <HomeIcon />, path: '/home' },
+  { text: 'Pages', icon: <PagesIcon />, path: '/pages' },
+  { text: 'Rooms & Suites', icon: <MeetingRoomIcon />, path: '/rooms' },
+  { text: 'Services', icon: <MiscellaneousServicesIcon />, path: '/services' },
+  { text: 'Blog', icon: <BookIcon />, path: '/blog' },
+  { text: 'Contact', icon: <ContactMailIcon />, path: '/contact' },
 ];
 
 const Layout = ({ children }) => {
@@ -53,6 +53,11 @@ const Layout = ({ children }) => {
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setMobileOpen(false);
   };
 
   const handleLogout = () => {
@@ -79,7 +84,7 @@ const Layout = ({ children }) => {
       <Divider />
       <List>
         {menuItems.map((item) => (
-          <ListItem button key={item.text}>
+          <ListItem button key={item.text} onClick={() => handleNavigation(item.path)}>
             <ListItemIcon>{item.icon}</ListItemIcon>
             <ListItemText primary={item.text} />
           </ListItem>
@@ -123,7 +128,7 @@ const Layout = ({ children }) => {
             <Box component="img" src={logo} alt="StayEase Logo" sx={{ height: 45 }} />
             <Box>
               {menuItems.map((item) => (
-                <Button key={item.text} sx={{ color: 'text.primary', mx: 1.5, textTransform: 'none', fontSize: '1rem' }}>
+                <Button key={item.text} sx={{ color: 'text.primary', mx: 1.5, textTransform: 'none', fontSize: '1rem' }} onClick={() => handleNavigation(item.path)}>
                   {item.text}
                 </Button>
               ))}

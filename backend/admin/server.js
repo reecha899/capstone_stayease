@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 // CORS Configuration
 const corsOptions = {
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000', // Frontend URL
+    origin: [process.env.FRONTEND_URL || 'http://localhost:3000', 'http://localhost:3001'], // Allow multiple origins
     credentials: true, // Allow cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Token-Expiry-Warning']
