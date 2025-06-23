@@ -3,6 +3,7 @@ const connectDB = require('./config/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Load environment variables
 dotenv.config({ path: '../config/config.env' });
@@ -26,6 +27,9 @@ const corsOptions = {
 
 // Middleware
 app.use(cors(corsOptions));
+
+// Serve static files from the 'uploads' directory
+app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
 
 // Routes
 app.use('/api/auth', require('./routes/auth'));

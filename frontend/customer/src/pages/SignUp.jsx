@@ -275,7 +275,7 @@ const SignUp = () => {
             Create Account
           </Typography>
           <Box component="form" width={'100%'} display={'flex'} flexDirection={'column'} noValidate onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} width={'100%'} display={'flex'} flexDirection={'column'} flexWrap={'nowrap'}>
               <Grid item xs={12}>
                 <TextField
                   required
