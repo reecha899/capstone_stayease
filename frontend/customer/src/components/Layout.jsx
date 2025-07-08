@@ -21,6 +21,7 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import BookIcon from '@mui/icons-material/Book';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import InfoIcon from '@mui/icons-material/Info';
 import LogoutIcon from '@mui/icons-material/Logout';
 import authService from '../services/authService';
 import logo from '../assets/customer-site-logo.jpg';
@@ -33,6 +34,7 @@ const menuItems = [
   { text: 'Rooms & Suites', icon: <MeetingRoomIcon />, path: '/rooms' },
   { text: 'Services', icon: <MiscellaneousServicesIcon />, path: '/services' },
   { text: 'Blog', icon: <BookIcon />, path: '/blog' },
+  { text: 'About Us', icon: <InfoIcon />, path: '/about' },
   { text: 'Contact', icon: <ContactMailIcon />, path: '/contact' },
 ];
 

@@ -8,6 +8,7 @@ import Pages from './pages/Pages';
 import RoomsAndSuites from './pages/RoomsAndSuites';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
+import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -73,6 +74,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Blog />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <ProtectedRoute>
+                <AboutUs />
               </ProtectedRoute>
             }
           />
