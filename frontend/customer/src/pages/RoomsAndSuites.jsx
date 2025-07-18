@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Box, Typography, Grid, Card, CardContent, Breadcrumbs, Link, Button, Pagination, Stack, Divider } from '@mui/material';
 import Footer from '../components/Footer';
 import coverImage from '../assets/home-page-cover-image.png';
@@ -10,6 +11,7 @@ const RoomsAndSuites = () => {
   const [rooms, setRooms] = useState([]);
   const [page, setPage] = useState(1);
   const roomsPerPage = 5;
+  const navigate = useNavigate();
 
   useEffect(() => {
     roomService.getRooms()
@@ -23,6 +25,10 @@ const RoomsAndSuites = () => {
 
   const handlePageChange = (event, value) => {
     setPage(value);
+  };
+
+  const handleViewMore = (room) => {
+    navigate('/room-details', { state: { room } });
   };
 
   const paginatedRooms = rooms.slice((page - 1) * roomsPerPage, page * roomsPerPage);
@@ -95,7 +101,7 @@ const RoomsAndSuites = () => {
                         ${room.price}
                         <Box component="span" sx={{ fontWeight: 'normal', fontSize: '0.9rem', color: 'text.secondary' }}> / Per night</Box>
                       </Typography>
-                      <Button variant="contained" sx={{ bgcolor: '#208c6c', color: 'white', textTransform: 'none', px: 3, borderRadius: '20px', '&:hover': { bgcolor: '#1a7558' } }}>
+                      <Button variant="contained" onClick={() => handleViewMore(room)} sx={{ bgcolor: '#208c6c', color: 'white', textTransform: 'none', px: 3, borderRadius: '20px', '&:hover': { bgcolor: '#1a7558' } }}>
                         View More
                       </Button>
                     </Box>
@@ -152,7 +158,7 @@ const RoomsAndSuites = () => {
                       ${room.price}
                       <Box component="span" sx={{ fontWeight: 'normal', fontSize: '0.8rem', color: 'text.secondary' }}> / Per night</Box>
                     </Typography>
-                    <Button variant="contained" sx={{ bgcolor: '#208c6c', color: 'white', textTransform: 'none', px: 2, borderRadius: '20px', fontSize: '0.875rem', '&:hover': { bgcolor: '#1a7558' } }}>
+                    <Button variant="contained" onClick={() => handleViewMore(room)} sx={{ bgcolor: '#208c6c', color: 'white', textTransform: 'none', px: 2, borderRadius: '20px', fontSize: '0.875rem', '&:hover': { bgcolor: '#1a7558' } }}>
                       View More
                     </Button>
                   </Box>

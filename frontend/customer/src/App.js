@@ -6,6 +6,7 @@ import AccountSuccess from './pages/AccountSuccess';
 import HomePage from './pages/HomePage';
 import Pages from './pages/Pages';
 import RoomsAndSuites from './pages/RoomsAndSuites';
+import RoomDetails from './pages/RoomDetails';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
 import AboutUs from './pages/AboutUs';
@@ -58,6 +59,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <RoomsAndSuites />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/room-details"
+            element={
+              <ProtectedRoute>
+                <RoomDetails />
               </ProtectedRoute>
             }
           />
