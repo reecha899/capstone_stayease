@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Box, Typography, Container, Breadcrumbs, Link, Divider } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import coverImage from '../assets/home-page-cover-image.png';
+import Footer from '../components/Footer';
+import ReactPlayer from 'react-player/youtube';
 
 const AboutUs = () => {
   const navigate = useNavigate();
@@ -68,7 +70,7 @@ const AboutUs = () => {
   useEffect(() => { setCurrent(0); }, []);
 
   return (
-    <Box>
+    <Box sx={{ width: '100%', overflowX: 'hidden' }}>
       {/* Cover Image Section */}
       <Box
         sx={{
@@ -139,12 +141,7 @@ const AboutUs = () => {
       {/* Outdoor Activities Section - Desktop & Mobile Responsive */}
       <Box
         sx={{
-          width: '100vw',
-          position: 'relative',
-          left: '50%',
-          right: '50%',
-          marginLeft: '-50vw',
-          marginRight: '-50vw',
+          width: '100%',
           bgcolor: '#f2f8f6',
           py: { xs: 4, md: 8 },
           mb: 4,
@@ -213,13 +210,19 @@ const AboutUs = () => {
           </Box>
         </Box>
         {/* Mobile Layout */}
+
+        <Box
+       sx= {{
+        width: '100%',
+        display: 'flex'
+       }}
+       >
         <Box
           sx={{
-            maxWidth: '98vw',
-            mx: 'auto',
+            width: '100%',
             display: { xs: 'block', md: 'none' },
             borderRadius: 3,
-            p: 3,
+            p: 2,
             mt: 2,
           }}
         >
@@ -247,7 +250,7 @@ const AboutUs = () => {
             ))}
           </Box>
           {/* Mobile Image Full-Width Slider (robust, one image visible at a time) */}
-          <Box sx={{ display: { xs: 'block', md: 'none' }, mt: 2, maxWidth: 400, mx: 'auto', width: '100%', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+          <Box sx={{ display: { xs: 'block', md: 'none' }, mt: 2, width: '100%', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
             <Box
               ref={sliderRef}
               sx={{
@@ -327,6 +330,8 @@ const AboutUs = () => {
             </Box>
           </Box>
         </Box>
+       </Box>
+        
       </Box>
 
       {/* Stats Section - Desktop & Mobile Responsive */}
@@ -360,11 +365,14 @@ const AboutUs = () => {
           ))}
         </Box>
         {/* Mobile Layout */}
+        
         <Box sx={{
           display: { xs: 'flex', md: 'none' },
           flexDirection: 'column',
           alignItems: 'center',
           gap: 3,
+          width: '100%',
+          px: 2,
         }}>
           {[{
             value: '350+', label: 'Luxury Rooms'
@@ -375,20 +383,993 @@ const AboutUs = () => {
           }, {
             value: '20+', label: 'Sport Activities'
           }].map((stat, idx, arr) => (
-            <React.Fragment>
-            <Box key={stat.label} sx={{ textAlign: 'center' }}>
+            <React.Fragment key={stat.label}>
+            <Box sx={{ textAlign: 'center', width: '100%' }}>
               <Typography variant="h5" fontWeight="bold" color="#111" sx={{ fontSize: 24 }}>{stat.value}</Typography>
               <Typography variant="h6" fontWeight="bold" color="#111" sx={{ fontSize: 16 }}>{stat.label}</Typography>
             </Box>
 
             {idx < arr.length - 1 && (
-                <Divider orientation="horizontal" flexItem sx={{ display: 'flex', marginX: 5,  bgcolor: 'rgba(0,0,0,0.18)' }} />
+                <Divider orientation="horizontal" flexItem sx={{ display: 'flex', width: '80%', bgcolor: 'rgba(0,0,0,0.18)' }} />
               )}
             </React.Fragment>
             
           ))}
         </Box>
       </Box>
+
+      {/* Why Choose Us Section - Desktop & Mobile Responsive */}
+      <Box
+        sx={{
+          width: '100%',
+          bgcolor: '#f8f9fa',
+          py: { xs: 4, md: 8 },
+          mb: 4,
+        }}
+      >
+        {/* Desktop Layout */}
+        <Box
+          sx={{
+            maxWidth: '1400px',
+            mx: 'auto',
+            display: { xs: 'none', md: 'flex' },
+            borderRadius: 4,
+            p: 5,
+            alignItems: 'center',
+            position: 'relative',
+            minHeight: 400,
+            gap: 6,
+          }}
+        >
+          {/* Left Section - Text and Data */}
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h4" fontWeight="bold" mb={4} color="#222">
+              Why Choose Us?
+            </Typography>
+            
+                         {/* Services */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222">Services</Typography>
+                 <Typography fontWeight="bold" color="#22987a">95%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 8, bgcolor: '#e9ecef', borderRadius: 4, overflow: 'hidden' }}>
+                 <Box sx={{ width: '95%', height: '100%', bgcolor: '#22987a', borderRadius: 4 }} />
+               </Box>
+             </Box>
+
+             {/* Activities */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222">Activities</Typography>
+                 <Typography fontWeight="bold" color="#22987a">85%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 8, bgcolor: '#e9ecef', borderRadius: 4, overflow: 'hidden' }}>
+                 <Box sx={{ width: '85%', height: '100%', bgcolor: '#22987a', borderRadius: 4 }} />
+               </Box>
+             </Box>
+
+             {/* Sports Activities */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222">Sports Activities</Typography>
+                 <Typography fontWeight="bold" color="#22987a">90%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 8, bgcolor: '#e9ecef', borderRadius: 4, overflow: 'hidden' }}>
+                 <Box sx={{ width: '90%', height: '100%', bgcolor: '#22987a', borderRadius: 4 }} />
+               </Box>
+             </Box>
+
+             {/* Rooms */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222">Rooms</Typography>
+                 <Typography fontWeight="bold" color="#22987a">98%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 8, bgcolor: '#e9ecef', borderRadius: 4, overflow: 'hidden' }}>
+                 <Box sx={{ width: '98%', height: '100%', bgcolor: '#22987a', borderRadius: 4 }} />
+               </Box>
+             </Box>
+          </Box>
+
+          {/* Right Section - Images */}
+          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: 400 }}>
+            {/* Main Image - Balcony View */}
+            <Box sx={{ position: 'relative', width: 300, height: 400, borderRadius: 6, overflow: 'hidden', boxShadow: 4 }}>
+              <img 
+                src={require('../assets/hotel-balcony-view.png')} 
+                alt="Balcony view with beach and ocean" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 24 }} 
+              />
+            </Box>
+            
+            {/* Overlay Image - Hotel Room with Breakfast */}
+            <Box sx={{ 
+              position: 'absolute', 
+              bottom: 30, 
+              left: 40, 
+              width: 150, 
+              height: 150, 
+              borderRadius: 3, 
+              overflow: 'hidden', 
+              boxShadow: 4, 
+              zIndex: 2
+            }}>
+              <img 
+                src={require('../assets/hotel-bedroom-view.png')} 
+                alt="Hotel room with breakfast" 
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 16 }} 
+              />
+            </Box>
+          </Box>
+        </Box>
+
+        {/* Mobile Layout */}
+       <Box
+       sx= {{
+        width: '100%',
+        display: 'flex'
+       }}
+       >
+       <Box
+          sx={{
+            width: '100%',
+            display: { xs: 'block', md: 'none' },
+            borderRadius: 3,
+            p: 3,
+            mt: 2,
+          }}
+        >
+          <Typography variant="h5" fontWeight="bold" mb={3} color="#222" sx={{ fontSize: '1.5rem', textAlign: 'center' }}>
+            Why Choose Us?
+          </Typography>
+          
+                     {/* Mobile Progress Bars */}
+           <Box sx={{ mb: 4, width: '100%' }}>
+             {/* Services */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222" sx={{ fontSize: 14 }}>Services</Typography>
+                 <Typography fontWeight="bold" color="#22987a" sx={{ fontSize: 14 }}>95%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 6, bgcolor: '#e9ecef', borderRadius: 3, overflow: 'hidden' }}>
+                 <Box sx={{ width: '95%', height: '100%', bgcolor: '#22987a', borderRadius: 3 }} />
+               </Box>
+             </Box>
+
+             {/* Activities */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222" sx={{ fontSize: 14 }}>Activities</Typography>
+                 <Typography fontWeight="bold" color="#22987a" sx={{ fontSize: 14 }}>85%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 6, bgcolor: '#e9ecef', borderRadius: 3, overflow: 'hidden' }}>
+                 <Box sx={{ width: '85%', height: '100%', bgcolor: '#22987a', borderRadius: 3 }} />
+               </Box>
+             </Box>
+
+             {/* Sports Activities */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222" sx={{ fontSize: 14 }}>Sports Activities</Typography>
+                 <Typography fontWeight="bold" color="#22987a" sx={{ fontSize: 14 }}>90%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 6, bgcolor: '#e9ecef', borderRadius: 3, overflow: 'hidden' }}>
+                 <Box sx={{ width: '90%', height: '100%', bgcolor: '#22987a', borderRadius: 3 }} />
+               </Box>
+             </Box>
+
+             {/* Rooms */}
+             <Box sx={{ mb: 3 }}>
+               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                 <Typography fontWeight="bold" color="#222" sx={{ fontSize: 14 }}>Rooms</Typography>
+                 <Typography fontWeight="bold" color="#22987a" sx={{ fontSize: 14 }}>98%</Typography>
+               </Box>
+               <Box sx={{ width: '100%', height: 6, bgcolor: '#e9ecef', borderRadius: 3, overflow: 'hidden' }}>
+                 <Box sx={{ width: '98%', height: '100%', bgcolor: '#22987a', borderRadius: 3 }} />
+               </Box>
+             </Box>
+           </Box>
+
+                     {/* Mobile Images - Clear & Attractive Layout */}
+           <Box sx={{ 
+             position: 'relative',
+             mt: 4,
+             height: 450,
+             width: '100%',
+             mx: 'auto'
+           }}>
+             {/* Main Large Image - Clear Background */}
+             <Box sx={{ 
+               position: 'absolute',
+               top: 0,
+               left: 0,
+               width: '100%',
+               height: '100%',
+               borderRadius: 28, 
+               overflow: 'hidden', 
+               boxShadow: '0 20px 60px rgba(0,0,0,0.25)',
+               background: '#ffffff',
+               '&:hover': {
+                 transform: 'scale(1.02)',
+                 transition: 'all 0.4s ease-in-out'
+               }
+             }}>
+               <img 
+                 src={require('../assets/hotel-balcony-view.png')} 
+                 alt="Balcony view with beach and ocean" 
+                 style={{ 
+                   width: '100%', 
+                   height: '100%', 
+                   objectFit: 'cover',
+                   filter: 'brightness(1.2) contrast(1.2) saturate(1.1)',
+                 }} 
+               />
+               
+               {/* Subtle Gradient Overlay for Clarity */}
+               <Box sx={{
+                 position: 'absolute',
+                 top: 0,
+                 left: 0,
+                 right: 0,
+                 bottom: 0,
+                 background: 'linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(0,0,0,0.1) 100%)',
+                 pointerEvents: 'none'
+               }} />
+             </Box>
+
+             {/* Large Floating Secondary Image - Top Right */}
+             <Box sx={{ 
+               position: 'absolute',
+               top: 25,
+               right: 25,
+               width: 140,
+               height: 110,
+               borderRadius: 20, 
+               overflow: 'hidden', 
+               boxShadow: '0 12px 35px rgba(0,0,0,0.3)',
+               border: '4px solid white',
+               transform: 'rotate(5deg)',
+               zIndex: 3,
+               '&:hover': {
+                 transform: 'rotate(0deg) scale(1.15)',
+                 transition: 'all 0.3s ease-in-out',
+                 zIndex: 5
+               }
+             }}>
+               <img 
+                 src={require('../assets/hotel-bedroom-view.png')} 
+                 alt="Hotel room with breakfast" 
+                 style={{ 
+                   width: '100%', 
+                   height: '100%', 
+                   objectFit: 'cover',
+                   filter: 'brightness(1.15) contrast(1.2)'
+                 }} 
+               />
+             </Box>
+
+             {/* Large Floating Third Image - Bottom Left */}
+             <Box sx={{ 
+               position: 'absolute',
+               bottom: 35,
+               left: 20,
+               width: 120,
+               height: 90,
+               borderRadius: 18, 
+               overflow: 'hidden', 
+               boxShadow: '0 10px 30px rgba(0,0,0,0.25)',
+               border: '4px solid white',
+               transform: 'rotate(-3deg)',
+               zIndex: 3,
+               '&:hover': {
+                 transform: 'rotate(0deg) scale(1.15)',
+                 transition: 'all 0.3s ease-in-out',
+                 zIndex: 5
+               }
+             }}>
+               <img 
+                 src={require('../assets/hotel-gym.png')} 
+                 alt="Hotel gym facilities" 
+                 style={{ 
+                   width: '100%', 
+                   height: '100%', 
+                   objectFit: 'cover',
+                   filter: 'brightness(1.15) contrast(1.2)'
+                 }} 
+               />
+             </Box>
+
+             {/* Enhanced Decorative Elements */}
+             <Box sx={{
+               position: 'absolute',
+               top: -20,
+               right: -15,
+               width: 60,
+               height: 60,
+               borderRadius: '50%',
+               background: 'linear-gradient(135deg, #22987a, #2ecc71)',
+               opacity: 0.95,
+               zIndex: 2,
+               animation: 'pulse 2s infinite',
+               boxShadow: '0 8px 20px rgba(34,152,122,0.4)'
+             }} />
+             
+             <Box sx={{
+               position: 'absolute',
+               bottom: -15,
+               left: -10,
+               width: 45,
+               height: 45,
+               borderRadius: '50%',
+               background: 'linear-gradient(135deg, #2ecc71, #22987a)',
+               opacity: 0.9,
+               zIndex: 2,
+               animation: 'pulse 2.5s infinite',
+               boxShadow: '0 6px 15px rgba(46,204,113,0.4)'
+             }} />
+
+             {/* Enhanced Center Content Overlay */}
+             <Box sx={{
+               position: 'absolute',
+               bottom: 25,
+               left: 25,
+               right: 25,
+               background: 'rgba(255,255,255,0.98)',
+               borderRadius: 16,
+               padding: 3,
+               backdropFilter: 'blur(15px)',
+               border: '2px solid rgba(34,152,122,0.2)',
+               zIndex: 4,
+               boxShadow: '0 8px 25px rgba(0,0,0,0.15)'
+             }}>
+               <Typography 
+                 variant="h6" 
+                 fontWeight="bold" 
+                 color="#22987a" 
+                 sx={{ 
+                   fontSize: '1.1rem',
+                   textAlign: 'center',
+                   mb: 1
+                 }}
+               >
+                 Luxury Experience
+               </Typography>
+               <Typography 
+                 variant="body2" 
+                 color="#555" 
+                 sx={{ 
+                   fontSize: '0.9rem',
+                   textAlign: 'center',
+                   lineHeight: 1.4,
+                   fontWeight: 500
+                 }}
+               >
+                 Premium amenities & stunning views
+               </Typography>
+             </Box>
+
+             {/* Enhanced Floating Icon */}
+             <Box sx={{
+               position: 'absolute',
+               top: '50%',
+               left: '50%',
+               transform: 'translate(-50%, -50%)',
+               width: 70,
+               height: 70,
+               borderRadius: '50%',
+               background: 'rgba(255,255,255,0.95)',
+               display: 'flex',
+               alignItems: 'center',
+               justifyContent: 'center',
+               boxShadow: '0 8px 25px rgba(0,0,0,0.2)',
+               zIndex: 5,
+               backdropFilter: 'blur(10px)',
+               border: '3px solid rgba(34,152,122,0.4)',
+               '&:hover': {
+                 transform: 'translate(-50%, -50%) scale(1.1)',
+                 transition: 'all 0.3s ease-in-out'
+               }
+             }}>
+               <span role="img" aria-label="star" style={{ fontSize: 32, color: '#22987a' }}>⭐</span>
+             </Box>
+
+             {/* Additional Small Decorative Elements */}
+             <Box sx={{
+               position: 'absolute',
+               top: '25%',
+               left: 15,
+               width: 25,
+               height: 25,
+               borderRadius: '50%',
+               background: 'linear-gradient(135deg, #2ecc71, #22987a)',
+               opacity: 0.8,
+               zIndex: 2,
+               animation: 'pulse 3s infinite'
+             }} />
+
+             <Box sx={{
+               position: 'absolute',
+               top: '15%',
+               right: 15,
+               width: 20,
+               height: 20,
+               borderRadius: '50%',
+               background: 'linear-gradient(135deg, #22987a, #2ecc71)',
+               opacity: 0.7,
+               zIndex: 2,
+               animation: 'pulse 2.8s infinite'
+             }} />
+           </Box>
+        </Box>
+       </Box>
+      </Box>
+
+      {/* Video Section - Desktop & Mobile Responsive */}
+      <Box
+        sx={{
+          width: '100%',
+          bgcolor: '#f2f8f6',
+          py: { xs: 3, md: 4 },
+          mb: 2,
+        }}
+      >
+        {/* Desktop Layout */}
+        <Box
+          sx={{
+            width: '100%',
+            display: { xs: 'none', md: 'block' },
+            textAlign: 'center',
+            position: 'relative',
+          }}
+        >
+          <Typography 
+            variant="h3" 
+            fontWeight="bold" 
+            color="#222" 
+            sx={{ 
+              mb: 3,
+              fontSize: '2rem',
+              lineHeight: 1.2
+            }}
+          >
+            Relax And Enjoy With Our<br />
+            Hotel & Resort
+          </Typography>
+          
+          {/* Desktop Video Player */}
+          <Box
+            sx={{
+              position: 'relative',
+              width: '100%',
+              height: 400,
+              overflow: 'hidden',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+              bgcolor: 'black',
+            }}
+          >
+            <ReactPlayer 
+              url="https://youtu.be/8zCydC_oaa8?si=IBRit29tDdHwj5_3"
+              width="100%" 
+              height="100%" 
+              playing={false}
+              controls
+              config={{
+                youtube: {
+                  playerVars: {
+                    modestbranding: 1,
+                    rel: 0,
+                    showinfo: 0,
+                    controls: 1
+                  }
+                }
+              }}
+            />
+          </Box>
+        </Box>
+
+        {/* Mobile Layout */}
+        <Box
+       sx= {{
+        width: '100%',
+        display: 'flex'
+       }}
+       >
+        <Box
+          sx={{
+            width: '100%',
+            display: { xs: 'block', md: 'none' },
+            textAlign: 'center',
+            px: 2,
+          }}
+        >
+          <Typography 
+            variant="h4" 
+            fontWeight="bold" 
+            color="#222" 
+            sx={{ 
+              mb: 2,
+              fontSize: '1.5rem',
+              lineHeight: 1.3
+            }}
+          >
+            Relax And Enjoy With Our<br />
+            Hotel & Resort
+          </Typography>
+          
+          {/* Mobile Video Player */}
+          <Box
+            sx={{
+              position: 'relative',
+              width: '100%',
+              height: 200,
+              overflow: 'hidden',
+              boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+              bgcolor: 'black',
+            }}
+          >
+            <ReactPlayer 
+              url="https://youtu.be/8zCydC_oaa8?si=IBRit29tDdHwj5_3"
+              width="100%" 
+              height="100%" 
+              playing={false}
+              controls
+              config={{
+                youtube: {
+                  playerVars: {
+                    modestbranding: 1,
+                    rel: 0,
+                    showinfo: 0,
+                    controls: 1
+                  }
+                }
+              }}
+            />
+          </Box>
+        </Box>
+       </Box>
+        
+      </Box>
+
+      {/* Expert Staff Person Section - Desktop & Mobile Responsive */}
+      <Box
+        sx={{
+          width: '100%',
+          bgcolor: '#f8f9fa',
+          py: { xs: 4, md: 8 },
+          mb: 4,
+        }}
+      >
+        {/* Desktop Layout */}
+        <Box
+          sx={{
+            maxWidth: '1400px',
+            mx: 'auto',
+            display: { xs: 'none', md: 'block' },
+            textAlign: 'center',
+          }}
+        >
+          <Typography 
+            variant="h3" 
+            fontWeight="bold" 
+            color="#222" 
+            sx={{ 
+              mb: 6,
+              fontSize: '2.5rem',
+              lineHeight: 1.2
+            }}
+          >
+            Expert Staff Person
+          </Typography>
+          
+          {/* Desktop Staff Cards */}
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-around',
+              gap: 4,
+              mt: 4,
+            }}
+          >
+            {/* Hardik Sharma */}
+            <Box
+              sx={{
+                flex: 1,
+                maxWidth: 300,
+                borderRadius: 4,
+                overflow: 'hidden',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                bgcolor: 'white',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                }
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 280,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={require('../assets/hardik-profile-photo.jpg')}
+                  alt="Hardik Sharma"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 3,
+                  bgcolor: '#e8f5e8',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  fontWeight="bold" 
+                  color="#222" 
+                  sx={{ mb: 1 }}
+                >
+                  Hardik Sharma
+                </Typography>
+                <Divider sx={{ mb: 1, bgcolor: '#22987a' }} />
+                <Typography 
+                  variant="body1" 
+                  color="#22987a" 
+                  fontWeight="bold"
+                >
+                  Chef Master
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Reecha Patel */}
+            <Box
+              sx={{
+                flex: 1,
+                maxWidth: 300,
+                borderRadius: 4,
+                overflow: 'hidden',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                bgcolor: 'white',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                }
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 280,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={require('../assets/reecha-profile-photo.jpg')}
+                  alt="Reecha Patel"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 3,
+                  bgcolor: '#e8f5e8',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  fontWeight="bold" 
+                  color="#222" 
+                  sx={{ mb: 1 }}
+                >
+                  Reecha Patel
+                </Typography>
+                <Divider sx={{ mb: 1, bgcolor: '#22987a' }} />
+                <Typography 
+                  variant="body1" 
+                  color="#22987a" 
+                  fontWeight="bold"
+                >
+                  Chef Master
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Parth Banker */}
+            <Box
+              sx={{
+                flex: 1,
+                maxWidth: 300,
+                borderRadius: 4,
+                overflow: 'hidden',
+                boxShadow: '0 8px 24px rgba(0,0,0,0.12)',
+                bgcolor: 'white',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                }
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 280,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={require('../assets/parth-profile-photo.jpg')}
+                  alt="Parth Banker"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 3,
+                  bgcolor: '#e8f5e8',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  fontWeight="bold" 
+                  color="#222" 
+                  sx={{ mb: 1 }}
+                >
+                  Parth Banker
+                </Typography>
+                <Divider sx={{ mb: 1, bgcolor: '#22987a' }} />
+                <Typography 
+                  variant="body1" 
+                  color="#22987a" 
+                  fontWeight="bold"
+                >
+                  Chef Master
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+
+        {/* Mobile Layout */}
+        <Box
+          sx={{
+            width: '100%',
+            display: { xs: 'block', md: 'none' },
+            px: 2,
+          }}
+        >
+          <Typography 
+            variant="h4" 
+            fontWeight="bold" 
+            color="#222" 
+            sx={{ 
+              mb: 4,
+              fontSize: '1.8rem',
+              lineHeight: 1.3,
+              textAlign: 'center'
+            }}
+          >
+            Expert Staff Person
+          </Typography>
+          
+          {/* Mobile Staff Cards - Vertical Stack */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3,
+              mt: 3,
+            }}
+          >
+            {/* Hardik Sharma - Mobile */}
+            <Box
+              sx={{
+                width: '100%',
+                borderRadius: 3,
+                overflow: 'hidden',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                bgcolor: 'white',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                }
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 200,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={require('../assets/hardik-profile-photo.jpg')}
+                  alt="Hardik Sharma"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 2,
+                  bgcolor: '#e8f5e8',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  fontWeight="bold" 
+                  color="#222" 
+                  sx={{ mb: 1, fontSize: '1.1rem' }}
+                >
+                  Hardik Sharma
+                </Typography>
+                <Divider sx={{ mb: 1, bgcolor: '#22987a' }} />
+                <Typography 
+                  variant="body1" 
+                  color="#22987a" 
+                  fontWeight="bold"
+                  sx={{ fontSize: '0.9rem' }}
+                >
+                  Chef Master
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Reecha Patel - Mobile */}
+            <Box
+              sx={{
+                width: '100%',
+                borderRadius: 3,
+                overflow: 'hidden',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                bgcolor: 'white',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                }
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 200,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={require('../assets/reecha-profile-photo.jpg')}
+                  alt="Reecha Patel"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 2,
+                  bgcolor: '#e8f5e8',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  fontWeight="bold" 
+                  color="#222" 
+                  sx={{ mb: 1, fontSize: '1.1rem' }}
+                >
+                  Reecha Patel
+                </Typography>
+                <Divider sx={{ mb: 1, bgcolor: '#22987a' }} />
+                <Typography 
+                  variant="body1" 
+                  color="#22987a" 
+                  fontWeight="bold"
+                  sx={{ fontSize: '0.9rem' }}
+                >
+                  Chef Master
+                </Typography>
+              </Box>
+            </Box>
+
+            {/* Parth Banker - Mobile */}
+            <Box
+              sx={{
+                width: '100%',
+                borderRadius: 3,
+                overflow: 'hidden',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.1)',
+                bgcolor: 'white',
+                transition: 'transform 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                }
+              }}
+            >
+              <Box
+                sx={{
+                  width: '100%',
+                  height: 200,
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
+              >
+                <img
+                  src={require('../assets/parth-profile-photo.jpg')}
+                  alt="Parth Banker"
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Box>
+              <Box
+                sx={{
+                  p: 2,
+                  bgcolor: '#e8f5e8',
+                  textAlign: 'center',
+                }}
+              >
+                <Typography 
+                  variant="h6" 
+                  fontWeight="bold" 
+                  color="#222" 
+                  sx={{ mb: 1, fontSize: '1.1rem' }}
+                >
+                  Parth Banker
+                </Typography>
+                <Divider sx={{ mb: 1, bgcolor: '#22987a' }} />
+                <Typography 
+                  variant="body1" 
+                  color="#22987a" 
+                  fontWeight="bold"
+                  sx={{ fontSize: '0.9rem' }}
+                >
+                  Chef Master
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      
+      {/* Footer */}
+      <Footer />
     </Box>
   );
 };
