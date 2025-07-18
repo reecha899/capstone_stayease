@@ -31,6 +31,10 @@ const theme = createTheme({
 });
 
 function App() {
+  // Debug environment configuration
+  console.log('Environment Configuration:');
+  console.log('REACT_APP_NODE_ENV:', process.env.REACT_APP_NODE_ENV);
+  console.log('REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
   const [isAuthenticated, setIsAuthenticated] = useState(null); // null = loading, false = not auth, true = auth
   const [loading, setLoading] = useState(true);
 
@@ -38,7 +42,7 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/auth/me', {
+        const res = await fetch(`${process.env.REACT_APP_API_URL}/auth/me`, {
           credentials: 'include',
         });
         if (res.ok) {
@@ -62,7 +66,7 @@ function App() {
 
   // Handle logout
   const handleLogout = async () => {
-    await fetch('http://localhost:5000/api/auth/logout', {
+            await fetch(`${process.env.REACT_APP_API_URL}/auth/logout`, {
       method: 'POST',
       credentials: 'include',
     });

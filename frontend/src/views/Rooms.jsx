@@ -71,7 +71,7 @@ export default function Rooms({ fetchWithAuth }) {
 
   const fetchRooms = async () => {
     try {
-      const res = await fetchWithAuth('http://localhost:5000/api/rooms');
+              const res = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/rooms`);
       const data = await res.json();
       setRooms(data);
     } catch (error) {
@@ -122,7 +122,7 @@ export default function Rooms({ fetchWithAuth }) {
   const handleDelete = async () => {
     if (selectedRoom) {
       try {
-        await fetchWithAuth(`http://localhost:5000/api/rooms/${selectedRoom._id}`, { method: 'DELETE' });
+        await fetchWithAuth(`${process.env.REACT_APP_API_URL}/rooms/${selectedRoom._id}`, { method: 'DELETE' });
         fetchRooms();
       } catch (error) {
         console.error('Error deleting room:', error);
@@ -159,13 +159,13 @@ export default function Rooms({ fetchWithAuth }) {
       if (isEdit && selectedRoom) {
         const updateData = { ...payload };
         delete updateData._id;
-        await fetchWithAuth(`http://localhost:5000/api/rooms/${selectedRoom._id}`, {
+        await fetchWithAuth(`${process.env.REACT_APP_API_URL}/rooms/${selectedRoom._id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(updateData),
         });
       } else {
-        await fetchWithAuth('http://localhost:5000/api/rooms', {
+        await fetchWithAuth(`${process.env.REACT_APP_API_URL}/rooms`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),

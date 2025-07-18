@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../config/env';
 
-const API_URL = 'http://localhost:5001/api/auth';
+const API_URL = `${config.authApiUrl}/auth`;
 
 const register = (userData) => {
   return axios.post(`${API_URL}/register`, userData);

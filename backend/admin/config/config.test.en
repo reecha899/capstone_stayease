@@ -1,0 +1,27 @@
+# Test Environment Configuration Template
+# Copy this file to config.test.env and fill in your actual values
+
+NODE_ENV=test
+
+# Server Configuration
+PORT=5002
+
+# MongoDB Configuration - Test Database
+MONGODB_URI=mongodb+srv://reecha899:reecha899@cluster0.ywfekfv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/capstone_stayease
+
+# JWT Configuration
+JWT_SECRET=stayease_test_hotel_management_2024_secure_key_test_environment
+JWT_EXPIRE=1h
+
+# Frontend URL for CORS - Test
+FRONTEND_URL=http://localhost:3002
+
+# Logging Configuration
+LOG_LEVEL=error
+ENABLE_LOGGING=false
+
+# Security Configuration
+CORS_ORIGINS=http://localhost:3002
+
+# Test Configuration
+ENABLE_TEST_MODE=true 

@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# StayEase Customer Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Customer frontend application for hotel booking with environment-specific configurations.
 
-## Available Scripts
+## Environment Setup
 
-In the project directory, you can run:
+This application supports three environments: **development**, **test**, and **production**.
 
-### `npm start`
+### Environment Files
+```
+├── env.dev          # Development environment
+├── env.test         # Test environment
+└── env.prod         # Production environment
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Environment Configurations
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Development Environment
+- **Port**: 3001
+- **API URL**: http://localhost:5001/api
+- **Admin URL**: http://localhost:3000
+- **Logging**: Debug level enabled
+- **Features**: Debug mode enabled
 
-### `npm test`
+#### Test Environment
+- **Port**: 3003
+- **API URL**: http://localhost:5003/api
+- **Admin URL**: http://localhost:3002
+- **Logging**: Error level only
+- **Features**: Test mode enabled
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Production Environment
+- **Port**: 3001
+- **API URL**: https://api.stayease-hotel.com/api
+- **Admin URL**: https://admin.stayease-hotel.com
+- **Logging**: Warn level enabled
+- **Features**: Production optimizations
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running the Application
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Development Mode
+```bash
+npm run dev
+```
 
-### `npm run eject`
+### Test Mode
+```bash
+npm run test
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Production Mode
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Building the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Production Build
+```bash
+npm run build
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Development Build
+```bash
+npm run build:dev
+```
 
-## Learn More
+### Test Build
+```bash
+npm run build:test
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Environment Variables
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `REACT_APP_NODE_ENV`: Environment name (development, test, production)
+- `REACT_APP_API_URL`: Backend API URL
+- `REACT_APP_FRONTEND_URL`: Customer frontend URL
+- `REACT_APP_ADMIN_URL`: Admin frontend URL
+- `REACT_APP_ENABLE_LOGGING`: Enable/disable logging
+- `REACT_APP_LOG_LEVEL`: Logging level (debug, warn, error)
 
-### Code Splitting
+## Using Environment Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Import the environment configuration in your components:
 
-### Analyzing the Bundle Size
+```javascript
+import { config, init } from './src/config/env';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+// Initialize environment
+const { config: envConfig, isValid } = init();
 
-### Making a Progressive Web App
+// Use configuration
+const apiUrl = config.apiUrl;
+const isDevelopment = config.isDevelopment;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Features
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Environment-specific API endpoints
+- Different logging levels per environment
+- Feature flags for environment-specific functionality
+- Automatic environment detection
+- Configuration validation

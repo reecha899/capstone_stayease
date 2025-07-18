@@ -50,7 +50,7 @@ function Dashboard({ fetchWithAuth }) {
     const fetchOverview = async () => {
       setLoading(true);
       try {
-        const res = await fetchWithAuth('http://localhost:5000/api/dashboard/overview');
+        const res = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/dashboard/overview`);
         const data = await res.json();
         setOverview([
           { label: "Today's Check-in", value: data.todaysCheckIn },
@@ -79,7 +79,7 @@ function Dashboard({ fetchWithAuth }) {
     const fetchRooms = async () => {
       setRoomsLoading(true);
       try {
-        const res = await fetchWithAuth('http://localhost:5000/api/dashboard/rooms-summary');
+        const res = await fetchWithAuth(`${process.env.REACT_APP_API_URL}/dashboard/rooms-summary`);
         const data = await res.json();
         setRooms(data);
       } catch (err) {

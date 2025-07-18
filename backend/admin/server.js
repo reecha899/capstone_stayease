@@ -2,11 +2,11 @@ const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv');
 const path = require('path');
+const { init: initEnv } = require('./config/env');
 
-// Load environment variables
-dotenv.config({ path: '../config/config.env' });
+// Initialize environment configuration
+const envConfig = initEnv();
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 // CORS Configuration
 const corsOptions = {
-    origin: [process.env.FRONTEND_URL || 'http://localhost:3000', 'http://localhost:3001'], // Allow multiple origins
+    origin: envConfig.corsOrigins, // Use environment-specific origins
     credentials: true, // Allow cookies
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Token-Expiry-Warning']
@@ -47,7 +47,7 @@ app.use((err, req, res, next) => {
     res.status(500).json({ message: 'Something went wrong!' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = envConfig.port;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`Admin server running on port ${PORT} in ${envConfig.nodeEnv} mode`);
 }); 

@@ -4,8 +4,12 @@
   "description": "Backend for StayEase customer authentication",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "cross-env NODE_ENV=development nodemon server.js",
+    "dev": "cross-env NODE_ENV=development nodemon server.js",
+    "test": "cross-env NODE_ENV=test node server.js",
+    "dev:customer": "cross-env NODE_ENV=development nodemon server.js",
+    "test:customer": "cross-env NODE_ENV=test node server.js",
+    "prod:customer": "cross-env NODE_ENV=production node server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -17,6 +21,7 @@
     "mongoose": "^6.2.9"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "cross-env": "^7.0.3"
   }
 } 

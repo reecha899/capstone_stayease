@@ -1,6 +1,6 @@
-# StayEase Admin Backend
+# StayEase Customer Backend
 
-Admin backend service for Hotel Management Dashboard with environment-specific configurations.
+Customer backend service for StayEase hotel booking with environment-specific configurations.
 
 ## Environment Setup
 
@@ -18,21 +18,21 @@ config/
 ### Environment Configurations
 
 #### Development Environment
-- **Port**: 5000
+- **Port**: 5001
 - **Database**: `capstone_stayease_dev`
 - **Logging**: Debug level enabled
 - **CORS**: Localhost origins allowed
 - **JWT**: 24-hour expiration
 
 #### Test Environment
-- **Port**: 5002
+- **Port**: 5003
 - **Database**: `capstone_stayease_test`
 - **Logging**: Error level only
 - **CORS**: Test-specific origins
 - **JWT**: 1-hour expiration
 
 #### Production Environment
-- **Port**: 5000
+- **Port**: 5001
 - **Database**: `capstone_stayease_prod`
 - **Logging**: Warn level enabled
 - **CORS**: Production domain origins
@@ -51,31 +51,31 @@ npm install
 ```bash
 npm run dev
 # or
-npm run dev:admin
+npm run dev:customer
 ```
 
 ### Test Mode
 ```bash
 npm run test
 # or
-npm run test:admin
+npm run test:customer
 ```
 
 ### Production Mode
 ```bash
 npm run prod
 # or
-npm run prod:admin
+npm run prod:customer
 ```
 
-### Default Start (Development)
+### Default Start (Production)
 ```bash
 npm start
 ```
 
 ## Environment Variables
 
-- `PORT`: Server port (default: 5000)
+- `CUSTOMER_PORT`: Server port (default: 5001)
 - `MONGODB_URI`: MongoDB connection string
 - `JWT_SECRET`: JWT signing secret
 - `JWT_EXPIRE`: JWT expiration time
@@ -86,14 +86,7 @@ npm start
 
 ## API Routes
 
-- `/api/auth` - Authentication routes
-- `/api/rooms` - Room management
-- `/api/bookings` - Booking management
-- `/api/users` - User management
-- `/api/deals` - Deal management
-- `/api/rates` - Rate management
-- `/api/guests` - Guest management
-- `/api/dashboard` - Dashboard data
+- `/api/auth` - Customer authentication routes
 
 ## Security Features
 
